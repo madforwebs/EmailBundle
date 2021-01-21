@@ -45,7 +45,7 @@ class MailerHandler
     {
         $env = $this->enviroment;
         if ('dev' == $env) {
-            return 'bigmamaswingtest@gmail.com';
+            return 'info@madforwebs.com';
         } else {
             return $destiny;
         }
@@ -53,10 +53,10 @@ class MailerHandler
 
     public function sendMessage($data)
     {
-        $data['origin'] = 'info@bigmamaswing.com';
+        $data['origin'] = 'info@madforwebs.com';
 
         /** @var Message $mail */
-        $mail = $this->em->getRepository('BuzingerEmailingBundle:Message')->findOneBy(['name' => $data['messageTemplateName']]);
+        $mail = $this->em->getRepository('MadForWebsEmailingBundle:Message')->findOneBy(['name' => $data['messageTemplateName']]);
 
         if(isset($data['language']))
         {
@@ -78,117 +78,6 @@ class MailerHandler
         }
 
 
-        if(isset($data['name'])){
-            $body = str_replace('#firstNameUser#',ucfirst($data['name']), $body);
-        }
-
-        if(isset($data['link'])){
-            $body = str_replace('#link#',$data['link'], $body);
-        }
-        if(isset($data['link'])){
-            $body = str_replace('#link#',$data['link'], $body);
-        }
-
-        if(isset($data['link2'])){
-            $body = str_replace('#link2#',$data['link2'], $body);
-        }
-        if(isset($data['link2'])){
-            $body = str_replace('#link2#',$data['link2'], $body);
-        }
-
-        if(isset($data['course'])){
-            if(isset($data['language']))
-            {
-                $translations = $data['course']->getTranslations($this->em);
-                if(isset($translations[$data['language']]))
-                {
-                    $body = str_replace('#course#',$translations[$data['language']]['name'], $body);
-                }else{
-                    $localeTmp = $data['course']->getLocale();
-                    $data['course']->setLocale('es');
-                    $this->em->refresh($data['course']);
-
-                    $body = str_replace('#course#',$data['course']->getName(), $body);
-                    $data['course']->setLocale($localeTmp);
-                    $this->em->refresh($data['course']);
-                }
-            }else{
-                $localeTmp = $data['course']->getLocale();
-                $data['course']->setLocale('es');
-                $this->em->refresh($data['course']);
-
-                $body = str_replace('#course#',$data['course']->getName(), $body);
-                $data['course']->setLocale($localeTmp);
-                $this->em->refresh($data['course']);
-            }
-
-        }
-
-        if(isset($data['couple'])){
-            $body = str_replace('#couple#',$data['couple'], $body);
-        }
-
-        if(isset($data['rolDance'])){
-            $body = str_replace('#rol#',$data['rolDance'], $body);
-        }
-
-        if(isset($data['rolCouple'])){
-            $body = str_replace('#rolCouple#',$data['rolCouple'], $body);
-        }
-
-        if(isset($data['friend'])){
-            $body = str_replace('#firstNameCouple#',$data['friend'], $body);
-        }
-
-        if(isset($data['schedule'])){
-            $body = str_replace('#schedule#',$data['schedule'], $body);
-        }
-
-        if(isset($data['pendingLevel'])){
-            $body = str_replace('#pendingLevel#',$data['pendingLevel'], $body);
-        }
-
-        if(isset($data['nextPayment'])){
-            $body = str_replace('#nextPayment#',$data['nextPayment'], $body);
-        }
-
-        if(isset($data['sesson'])){
-            $body = str_replace('#sesson#',$data['sesson'], $body);
-        }
-
-        if(isset($data['leftDays'])){
-            $body = str_replace('#leftDays#',$data['leftDays'], $body);
-        }
-
-        if(isset($data['subject'])){
-            $body = str_replace('#subjectContact#',$data['subject'], $body);
-        }
-
-        if(isset($data['message'])){
-            $body = str_replace('#messageContact#',$data['message'], $body);
-        }
-
-        if(isset($data['emailContact'])){
-            $body = str_replace('#emailContact#',$data['emailContact'], $body);
-        }
-
-        if(isset($data['payments'])){
-            $body = str_replace('#payments#',$data['payments'], $body);
-        }
-        if(isset($data['payments'])){
-            $body = str_replace('#paymentsList#',$data['payments'], $body);
-        }
-
-        if(isset($data['payments'])){
-            $body = str_replace('#listPaymentsCourse#',$data['payments'], $body);
-        }
-
-        if(isset($data['inscription'])){
-            $body = str_replace('#inscription#',$data['inscription'], $body);
-        }
-        if(isset($data['coupleEmail'])){
-            $body = str_replace('#coupleEmail#',$data['coupleEmail'], $body);
-        }
 
         if(isset($data['dateSession'])){
             $body = str_replace('#dateSession#',ucfirst($data['dateSession']), $body);
