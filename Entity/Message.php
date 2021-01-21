@@ -13,6 +13,9 @@
 
 namespace MadForWebs\EmailBundle\Entity;
 
+use Gedmo\Mapping\Annotation as Gedmo;
+use Gedmo\Translatable\Translatable;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -24,7 +27,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Message
 {
     /**
-     * @var int
+     * @var integer
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -40,8 +43,16 @@ class Message
     private $name;
 
     /**
+     * @Gedmo\Locale
+     * Used locale to override Translation listener`s locale
+     * this is not a mapped field of entity metadata, just a simple property
+     */
+    private $locale;
+
+    /**
      * @var string
      *
+     * @Gedmo\Translatable
      * @ORM\Column(name="subject", type="string", length=255)
      */
     private $subject;
@@ -49,14 +60,16 @@ class Message
     /**
      * @var string
      *
+     * @Gedmo\Translatable
      * @ORM\Column(name="content", type="text")
      */
     private $content;
 
+
     /**
-     * Get id.
+     * Get id
      *
-     * @return int
+     * @return integer 
      */
     public function getId()
     {
@@ -64,10 +77,9 @@ class Message
     }
 
     /**
-     * Set name.
+     * Set name
      *
      * @param string $name
-     *
      * @return Message
      */
     public function setName($name)
@@ -78,9 +90,9 @@ class Message
     }
 
     /**
-     * Get name.
+     * Get name
      *
-     * @return string
+     * @return string 
      */
     public function getName()
     {
@@ -88,10 +100,9 @@ class Message
     }
 
     /**
-     * Set subject.
+     * Set subject
      *
      * @param string $subject
-     *
      * @return Message
      */
     public function setSubject($subject)
@@ -102,9 +113,9 @@ class Message
     }
 
     /**
-     * Get subject.
+     * Get subject
      *
-     * @return string
+     * @return string 
      */
     public function getSubject()
     {
@@ -112,10 +123,9 @@ class Message
     }
 
     /**
-     * Set content.
+     * Set content
      *
      * @param string $content
-     *
      * @return Message
      */
     public function setContent($content)
@@ -126,12 +136,35 @@ class Message
     }
 
     /**
-     * Get content.
+     * Get content
      *
-     * @return string
+     * @return string 
      */
     public function getContent()
     {
         return $this->content;
+    }
+
+
+    public function getLocale()
+    {
+        return $this->locale;
+    }
+
+    public function setLocale($locale)
+    {
+        $this->locale = $locale;
+    }
+
+    public function setTranslatableLocale($locale)
+    {
+        $this->locale = $locale;
+    }
+
+    public function getTranslations($em)
+    {
+
+        $translations = $em->getRepository('Gedmo\Translatable\Entity\Translation')->findTranslations($this);
+        return $translations;
     }
 }
