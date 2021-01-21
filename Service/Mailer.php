@@ -65,7 +65,7 @@ class Mailer
         }
 
         /** @var \MadForWebs\EmailBundle\Entity\Template $mail */
-        $template = $em->getRepository('MadForWebsEmailBundle:Template')->findOneBy(['name' => $templateName]);
+        $template = $em->getRepository('EmailBundle:Template')->findOneBy(['name' => $templateName]);
         $subject = $this->translator->trans($subject);
         $value = Yaml::parse(file_get_contents($rootDir));
         $bcc = $value['parameters']['mailer_bcc'];

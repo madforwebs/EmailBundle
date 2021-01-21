@@ -47,6 +47,6 @@ class MessageType extends AbstractType
      */
     public function getName()
     {
-        return 'madforwebs_emailingbundle_message';
+        return 'madforwebs_emailbundle_message';
     }
 }

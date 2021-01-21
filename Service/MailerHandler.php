@@ -56,7 +56,7 @@ class MailerHandler
         $data['origin'] = 'info@madforwebs.com';
 
         /** @var Message $mail */
-        $mail = $this->em->getRepository('MadForWebsEmailingBundle:Message')->findOneBy(['name' => $data['messageTemplateName']]);
+        $mail = $this->em->getRepository('EmailBundle:Message')->findOneBy(['name' => $data['messageTemplateName']]);
 
         if(isset($data['language']))
         {
