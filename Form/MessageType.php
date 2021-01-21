@@ -38,7 +38,7 @@ class MessageType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Buzinger\EmailingBundle\Entity\Message',
+            'data_class' => 'MadForWebs\EmailBundle\Entity\Message',
         ));
     }
 
@@ -47,6 +47,6 @@ class MessageType extends AbstractType
      */
     public function getName()
     {
-        return 'buzinger_emailingbundle_message';
+        return 'madforwebs_emailingbundle_message';
     }
 }

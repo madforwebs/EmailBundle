@@ -37,7 +37,7 @@ class TemplateType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Buzinger\EmailingBundle\Entity\Template',
+            'data_class' => 'MadForWebs\EmailBundle\Entity\Template',
         ));
     }
 
@@ -46,6 +46,6 @@ class TemplateType extends AbstractType
      */
     public function getName()
     {
-        return 'buzinger_emailingbundle_template';
+        return 'madforwebs_emailbundle_template';
     }
 }
