@@ -1,0 +1,22 @@
+{% extends "CoreBundle:Templates/Mailer:layout.html.twig" %}
+{% block subject %}
+    {% autoescape false %}
+    {{ subject | trans }}
+    {% endautoescape %}
+{% endblock %}
+{% block body_text %}
+    <p>Nuevo mensaje :</p>
+{% endblock %}
+{% block body_html %}
+    <div>
+        {{ body_text|raw }}
+    </div>
+{% endblock %}
+
+{% block signature %}
+    {% if signature is defined and signature is not null %}
+        {{ signature|raw }}
+    {% else %}
+        {% include 'CoreBundle:Templates/Mailer:_signature_mailing.html.twig' %}
+    {% endif %}
+{% endblock signature %}

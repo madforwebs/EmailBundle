@@ -1,0 +1,13 @@
+parameters:
+  mfw.mailer.handler.class: 'MadForWebs\EmailBundle\Service\MailerHandler'
+  mfw.mailer.class: 'MadForWebs\EmailBundle\Service\Mailer'
+
+services:
+
+  mfw.mailer.handler:
+    class: %mfw.mailer.handler.class%
+    arguments: ["@doctrine.orm.entity_manager", "@router" , "@mfw.mailer", "@translator", "%app%", "%enviroment%"]
+  mfw.mailer:
+    class: %mfw.mailer.class%
+    arguments: ["@doctrine.orm.entity_manager", "@router", "@translator", "@templating", "@mailer"]
+
