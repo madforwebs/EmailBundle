@@ -78,9 +78,12 @@ class MailerHandler
         }
 
 
+        if(isset($data['name'])){
+            $body = str_replace('#name#',ucfirst($data['name']), $body);
+        }
 
-        if(isset($data['dateSession'])){
-            $body = str_replace('#dateSession#',ucfirst($data['dateSession']), $body);
+        if(isset($data['origin'])){
+            $body = str_replace('#origin#',ucfirst($data['origin']), $body);
         }
 
         $destiny = $this->changeDestinyEnviroment($data['email']);
