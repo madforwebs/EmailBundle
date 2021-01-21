@@ -14,7 +14,7 @@
 namespace MadForWebs\EmailBundle\Service;
 
 
-use Buzinger\EmailingBundle\Entity\Message;
+use MadForWebs\EmailBundle\Entity\Message;
 
 class MailerHandler
 {
