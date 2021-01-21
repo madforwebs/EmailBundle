@@ -23,7 +23,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
  *
  * @see http://symfony.com/doc/current/cookbook/bundles/extension.html
  */
-class MadForWebsEmailExtension extends Extension
+class EmailExtension extends Extension
 {
     /**
      * {@inheritdoc}

@@ -15,6 +15,6 @@ namespace MadForWebs\EmailBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class MadForWebsEmailBundle extends Bundle
+class EmailBundle extends Bundle
 {
 }
