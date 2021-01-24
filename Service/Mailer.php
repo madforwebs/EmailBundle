@@ -82,8 +82,6 @@ class Mailer
         $message->setBody($templateComplete, 'text/html');
         $message->setTo(trim($destiny));
         if (true) {
-//            echo $message->getBody();
-//            exit;
             $this->mailer->send($message);
         }
     }
