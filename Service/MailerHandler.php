@@ -45,7 +45,7 @@ class MailerHandler
     {
         $env = $this->enviroment;
         if ('dev' == $env) {
-            return 'info@madforwebs.com';
+            return 'fer@madforwebs.com';
         } else {
             return $destiny;
         }
@@ -80,6 +80,10 @@ class MailerHandler
 
         if(isset($data['name'])){
             $body = str_replace('#name#',ucfirst($data['name']), $body);
+        }
+
+        if(isset($data['referer'])){
+            $body = str_replace('#referer#',ucfirst($data['referer']), $body);
         }
 
         if(isset($data['origin'])){
