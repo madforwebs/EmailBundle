@@ -90,6 +90,10 @@ class MailerHandler
             $body = str_replace('#origin#',ucfirst($data['origin']), $body);
         }
 
+        if(isset($data['message'])){
+            $body = str_replace('#message#',ucfirst($data['message']), $body);
+        }
+
         $destiny = $this->changeDestinyEnviroment($data['email']);
         /** @var Mailer $mailer */
         $mailer = $this->mailer;
