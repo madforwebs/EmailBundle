@@ -99,6 +99,12 @@ class MailerHandler
         $mailer = $this->mailer;
         $dataEmail = array();
         $dataEmail['subject'] = $subject;
+
+        if($data['files']){
+            $dataEmail['files'] = $data['files'];
+        }else{
+            $dataEmail['files'] = null;
+        }
         $dataEmail['body_text'] = $body;
 
         if (isset($data['template'])) {
@@ -107,6 +113,6 @@ class MailerHandler
             $dataEmail['template'] = null;
         }
 
-        $mailer->sendMessage($destiny, $data['origin'], $subject, $body, $dataEmail['template']);
+        $mailer->sendMessage($destiny, $data['origin'], $subject, $body, $dataEmail['template'], $dataEmail['files']);
     }
 }

@@ -48,7 +48,7 @@ class Mailer
         return $this;
     }
 
-    public function sendMessage($destiny, $origin, $subject, $messageTmp, $templateName = null)
+    public function sendMessage($destiny, $origin, $subject, $messageTmp, $templateName = null , $files = null )
     {
         $em = $this->em;
         $rootDir = __DIR__.'/../../../../app/config/parameters.yml';
@@ -58,8 +58,6 @@ class Mailer
         $enviroment = $value['parameters']['enviroment'];
         $sendEmail = $value['parameters']['sendEmail'];
 
-//        dump($templateName);
-//        exit;
         if (null == $templateName) {
             $templateName = $value['parameters']['default_template_name'];
         }
@@ -79,6 +77,13 @@ class Mailer
             ->setSubject($subject)
             ->setFrom($origin);
         $templateComplete = str_replace('#content#', $messageTmp, $template->getContent());
+
+
+        if (null != $files){
+            foreach ($context['ficheros'] as $fichero)
+                $message->attach(\Swift_Attachment::fromPath($fichero));
+        }
+
         $message->setBody($templateComplete, 'text/html');
         $message->setTo(trim($destiny));
         if (true) {
