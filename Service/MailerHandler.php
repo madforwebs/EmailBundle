@@ -96,6 +96,10 @@ class MailerHandler
             $body = str_replace('#origin#',ucfirst($data['origin']), $body);
         }
 
+        if(isset($data['subject'])){
+            $body = str_replace('#subject#',ucfirst($data['subject']), $body);
+        }
+
         if(isset($data['message'])){
             $body = str_replace('#message#',ucfirst($data['message']), $body);
         }
