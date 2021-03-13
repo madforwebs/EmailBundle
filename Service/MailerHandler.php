@@ -44,7 +44,16 @@ class MailerHandler
     public function changeDestinyEnviroment($destiny)
     {
         $env = $this->enviroment;
+
+         $rootDir = __DIR__.'/../../../../app/config/parameters.yml';
+
+        $value = Yaml::parse(file_get_contents($rootDir));
+        
+        
         if ('dev' == $env) {
+            if(isset($value['parameters']['mailer_dev']) &&  $value['parameters']['mailer_dev'] != null){
+                return $value['parameters']['mailer_dev']
+            }
             return 'fer@madforwebs.com';
         } else {
             return $destiny;
