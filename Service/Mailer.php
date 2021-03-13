@@ -20,10 +20,7 @@ use MadForWebs\EmailBundle\Entity\Template;
 //use sfConfig;
 use Symfony\Component\Yaml\Yaml;
 
-/**
- * Genera directivas SSI de include virtual
- * http://en.wikipedia.org/wiki/Server_Side_Includes.
- */
+
 class Mailer
 {
     /**

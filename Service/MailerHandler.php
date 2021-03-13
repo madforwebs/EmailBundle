@@ -53,7 +53,13 @@ class MailerHandler
 
     public function sendMessage($data)
     {
-        $data['origin'] = 'info@madforwebs.com';
+        if(
+            !isset($data['origin']) ||
+            isset($data['origin']) && $data['origin'] == null
+        ){
+            $data['origin'] = 'info@madforwebs.com';
+        }
+        
 
         /** @var Message $mail */
         $mail = $this->em->getRepository('EmailBundle:Message')->findOneBy(['name' => $data['messageTemplateName']]);
