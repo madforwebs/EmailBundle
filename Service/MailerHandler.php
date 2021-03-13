@@ -51,8 +51,11 @@ class MailerHandler
         
         
         if ('dev' == $env) {
-            if(isset($value['parameters']['mailer_dev']) &&  $value['parameters']['mailer_dev'] != null){
-                return $value['parameters']['mailer_dev']
+            if(
+                isset($value['parameters']['mailer_dev']) &&
+                $value['parameters']['mailer_dev'] != null
+            ){
+                return $value['parameters']['mailer_dev'];
             }
             return 'fer@madforwebs.com';
         } else {
