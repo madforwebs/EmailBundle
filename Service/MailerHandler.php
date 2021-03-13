@@ -15,6 +15,7 @@ namespace MadForWebs\EmailBundle\Service;
 
 
 use MadForWebs\EmailBundle\Entity\Message;
+use Symfony\Component\Yaml\Yaml;
 
 class MailerHandler
 {
